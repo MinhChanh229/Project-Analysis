@@ -56,10 +56,15 @@ Basic descriptive statistics:
 df.describe()
 ```
 <img width="1758" height="342" alt="image" src="https://github.com/user-attachments/assets/1408cfa4-c8f6-4459-a862-cfff18b224c2" />
+ 
  General Dataset Overview
+
 Number of Observations: 10,000 rows.
+
 Exited (Churn Rate):
+  
   Mean = 0.2038 → Around 20.4% churn rate.
+
 This is a moderate churn rate in banking datasets.
 
  Variable-by-Variable Insights
