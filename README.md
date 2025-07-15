@@ -132,3 +132,4 @@ plt.show()
 df.to_csv("bank_customer_churn_cleaned.csv", index=False)
 print("✅ ETL pipeline hoàn tất!")
 ```
+## Create Power BI.
