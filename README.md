@@ -33,6 +33,6 @@ df.sample(10)
 ### 2. Transform data:
 ```code
 df.info()
-<img width="445" height="510" alt="image" src="https://github.com/user-attachments/assets/b61e4ffa-1e7f-460a-8d46-08f06589e80e" />
 ```
+<img width="445" height="510" alt="image" src="https://github.com/user-attachments/assets/9b15c03c-77d8-4984-ba27-7a0c0bd7c274" />
 
