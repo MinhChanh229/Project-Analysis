@@ -48,7 +48,12 @@ df.info()
 ```
 <img width="464" height="526" alt="image" src="https://github.com/user-attachments/assets/2ef9547e-0661-4664-9b07-f67acc8bc279" />
 
-There are do not need handle missing values and remove duplicates.
+ Check missing values:
+ ```code
+print(df.isnull().sum())
+```
+<img width="235" height="387" alt="image" src="https://github.com/user-attachments/assets/77eca3f3-a872-4072-8329-95a64f8a8e91" />
+
 
 Basic descriptive statistics:
    Show a descriptive statistics of the numeric columns
@@ -57,7 +62,7 @@ df.describe()
 ```
 <img width="1758" height="342" alt="image" src="https://github.com/user-attachments/assets/1408cfa4-c8f6-4459-a862-cfff18b224c2" />
  
- General Dataset Overview
+   General Dataset Overview
 
 Number of Observations: 10,000 rows.
 
@@ -67,7 +72,7 @@ Exited (Churn Rate):
 
 This is a moderate churn rate in banking datasets.
 
- Variable-by-Variable Insights
+   Variable-by-Variable Insights
 | Variable              | Observation Summary                                                 |
 | --------------------- | ------------------------------------------------------------------- |
 | **CreditScore**       | Mean: 650.5. Range: 350–850. Wide spread. Some very low scores.     |
@@ -82,3 +87,48 @@ This is a moderate churn rate in banking datasets.
 | **SatisfactionScore** | Median: 3. Distribution looks roughly uniform (min 1, max 5).       |
 | **Point Earned**      | Median: 605 points. Max: 1,000 points. Skewed toward higher values. |
 
+   Business Implications
+
+      Age & Balance:
+
+Older customers tend to have higher balances.
+
+Churn prevention may focus on customers with higher balances.
+
+      Credit Card & Product Count:
+
+70%+ of customers own a credit card, which is normal.
+
+Most customers use 1–2 products → Potential for cross-selling opportunities.
+
+      Complaints & Churn:
+
+20% complaint rate aligns with the churn rate, suggesting possible correlation.
+
+#### Boxplots to compare distributions by churn
+```code
+for col in ['Age', 'Balance', 'EstimatedSalary', 'CreditScore']:
+    plt.figure(figsize=(6, 4))
+    sns.boxplot(x='Exited', y=col, data=df)
+    plt.title(f'{col} vs. Exited')
+    plt.show()
+```
+<img width="603" height="446" alt="image" src="https://github.com/user-attachments/assets/a95b8ec9-d5b3-48a0-a573-e7947303c9f5" />
+<img width="643" height="440" alt="image" src="https://github.com/user-attachments/assets/afc4c514-c841-4a57-8293-ab660c33609b" />
+<img width="652" height="448" alt="image" src="https://github.com/user-attachments/assets/5c8a0efe-9cc3-48f2-95b6-6efd97aab88a" />
+<img width="620" height="436" alt="image" src="https://github.com/user-attachments/assets/ebf16381-80c2-4bab-aca2-ecb61db9e944" />
+
+```code
+sns.violinplot(x='Exited', y='Balance', data=df)
+plt.title('Balance vs Churn')
+plt.xlabel('Exited')
+plt.ylabel('Balance')
+plt.show()
+```
+<img width="674" height="518" alt="image" src="https://github.com/user-attachments/assets/9c31b5d8-27dd-45f7-88cf-1fc50d4a2a2f" />
+
+### 3.Load data:
+```code
+df.to_csv("bank_customer_churn_cleaned.csv", index=False)
+print("✅ ETL pipeline hoàn tất!")
+```
